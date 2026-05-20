@@ -1,0 +1,1186 @@
+{
+  "af": {
+    "label": "Afrikaans",
+    "versions": [
+      {
+        "code": "af/aba",
+        "label": "Afrikaans — aba"
+      },
+      {
+        "code": "af/afr53",
+        "label": "Afrikaans — afr53"
+      },
+      {
+        "code": "af/afr83",
+        "label": "Afrikaans — afr83"
+      }
+    ]
+  },
+  "akp": {
+    "label": "Akposso",
+    "versions": [
+      {
+        "code": "akp/akp",
+        "label": "Akposso — akp"
+      }
+    ]
+  },
+  "ar": {
+    "label": "Arabic",
+    "versions": [
+      {
+        "code": "ar/alab",
+        "label": "Arabic — alab"
+      },
+      {
+        "code": "ar/avddv",
+        "label": "Arabic — avddv"
+      },
+      {
+        "code": "ar/ervar",
+        "label": "Arabic — ervar"
+      },
+      {
+        "code": "ar/nav",
+        "label": "Arabic — nav"
+      }
+    ]
+  },
+  "bc": {
+    "label": "Bacama",
+    "versions": [
+      {
+        "code": "bc/bpv",
+        "label": "Bacama — bpv"
+      }
+    ]
+  },
+  "btx": {
+    "label": "Batak Karo",
+    "versions": [
+      {
+        "code": "btx/btx",
+        "label": "Batak Karo — btx"
+      }
+    ]
+  },
+  "cb": {
+    "label": "Cebuano",
+    "versions": [
+      {
+        "code": "cb/apsd",
+        "label": "Cebuano — apsd"
+      },
+      {
+        "code": "cb/rcpv",
+        "label": "Cebuano — rcpv"
+      }
+    ]
+  },
+  "cnh": {
+    "label": "Chin (Hakha)",
+    "versions": [
+      {
+        "code": "cnh/hcl",
+        "label": "Chin (Hakha) — hcl"
+      }
+    ]
+  },
+  "cy": {
+    "label": "Cheyenne",
+    "versions": [
+      {
+        "code": "cy/bcnd",
+        "label": "Cheyenne — bcnd"
+      }
+    ]
+  },
+  "de": {
+    "label": "German",
+    "versions": [
+      {
+        "code": "de/ngude",
+        "label": "German — ngude"
+      },
+      {
+        "code": "de/sch2000",
+        "label": "German — sch2000"
+      }
+    ]
+  },
+  "dt": {
+    "label": "Ditammari",
+    "versions": [
+      {
+        "code": "dt/bdk",
+        "label": "Ditammari — bdk"
+      }
+    ]
+  },
+  "en": {
+    "label": "English",
+    "versions": [
+      {
+        "code": "en/akjv",
+        "label": "English — akjv"
+      },
+      {
+        "code": "en/amp",
+        "label": "English — amp"
+      },
+      {
+        "code": "en/ampc",
+        "label": "English — ampc"
+      },
+      {
+        "code": "en/asv",
+        "label": "English — asv"
+      },
+      {
+        "code": "en/brg",
+        "label": "English — brg"
+      },
+      {
+        "code": "en/ceb",
+        "label": "English — ceb"
+      },
+      {
+        "code": "en/cev",
+        "label": "English — cev"
+      },
+      {
+        "code": "en/cevd",
+        "label": "English — cevd"
+      },
+      {
+        "code": "en/cjb",
+        "label": "English — cjb"
+      },
+      {
+        "code": "en/csb",
+        "label": "English — csb"
+      },
+      {
+        "code": "en/darby",
+        "label": "English — darby"
+      },
+      {
+        "code": "en/dlnt",
+        "label": "English — dlnt"
+      },
+      {
+        "code": "en/dra",
+        "label": "English — dra"
+      },
+      {
+        "code": "en/ehv",
+        "label": "English — ehv"
+      },
+      {
+        "code": "en/erv",
+        "label": "English — erv"
+      },
+      {
+        "code": "en/esv",
+        "label": "English — esv"
+      },
+      {
+        "code": "en/exb",
+        "label": "English — exb"
+      },
+      {
+        "code": "en/gnt",
+        "label": "English — gnt"
+      },
+      {
+        "code": "en/gnv",
+        "label": "English — gnv"
+      },
+      {
+        "code": "en/gw",
+        "label": "English — gw"
+      },
+      {
+        "code": "en/hcsb",
+        "label": "English — hcsb"
+      },
+      {
+        "code": "en/icb",
+        "label": "English — icb"
+      },
+      {
+        "code": "en/isv",
+        "label": "English — isv"
+      },
+      {
+        "code": "en/jub",
+        "label": "English — jub"
+      },
+      {
+        "code": "en/kj21",
+        "label": "English — kj21"
+      },
+      {
+        "code": "en/kjv",
+        "label": "English — kjv"
+      },
+      {
+        "code": "en/leb",
+        "label": "English — leb"
+      },
+      {
+        "code": "en/mev",
+        "label": "English — mev"
+      },
+      {
+        "code": "en/mounce",
+        "label": "English — mounce"
+      },
+      {
+        "code": "en/msg",
+        "label": "English — msg"
+      },
+      {
+        "code": "en/nabre",
+        "label": "English — nabre"
+      },
+      {
+        "code": "en/nasb",
+        "label": "English — nasb"
+      },
+      {
+        "code": "en/ncv",
+        "label": "English — ncv"
+      },
+      {
+        "code": "en/net",
+        "label": "English — net"
+      },
+      {
+        "code": "en/nirv",
+        "label": "English — nirv"
+      },
+      {
+        "code": "en/niv1984",
+        "label": "English — niv1984"
+      },
+      {
+        "code": "en/niv2011",
+        "label": "English — niv2011"
+      },
+      {
+        "code": "en/nivuk",
+        "label": "English — nivuk"
+      },
+      {
+        "code": "en/nkjv",
+        "label": "English — nkjv"
+      },
+      {
+        "code": "en/nlt",
+        "label": "English — nlt"
+      },
+      {
+        "code": "en/nlt2013",
+        "label": "English — nlt2013"
+      },
+      {
+        "code": "en/nlv",
+        "label": "English — nlv"
+      },
+      {
+        "code": "en/nog",
+        "label": "English — nog"
+      },
+      {
+        "code": "en/nrsv",
+        "label": "English — nrsv"
+      },
+      {
+        "code": "en/nrsva",
+        "label": "English — nrsva"
+      },
+      {
+        "code": "en/ojb",
+        "label": "English — ojb"
+      },
+      {
+        "code": "en/phillips",
+        "label": "English — phillips"
+      },
+      {
+        "code": "en/rsv",
+        "label": "English — rsv"
+      },
+      {
+        "code": "en/rsvce",
+        "label": "English — rsvce"
+      },
+      {
+        "code": "en/tlb",
+        "label": "English — tlb"
+      },
+      {
+        "code": "en/tlv",
+        "label": "English — tlv"
+      },
+      {
+        "code": "en/tpt",
+        "label": "English — tpt"
+      },
+      {
+        "code": "en/voice",
+        "label": "English — voice"
+      },
+      {
+        "code": "en/web",
+        "label": "English — web"
+      },
+      {
+        "code": "en/webbe",
+        "label": "English — webbe"
+      },
+      {
+        "code": "en/wyc",
+        "label": "English — wyc"
+      },
+      {
+        "code": "en/ylt",
+        "label": "English — ylt"
+      }
+    ]
+  },
+  "es": {
+    "label": "Spanish",
+    "versions": [
+      {
+        "code": "es/bhti",
+        "label": "Spanish — bhti"
+      },
+      {
+        "code": "es/dhh",
+        "label": "Spanish — dhh"
+      },
+      {
+        "code": "es/nblh",
+        "label": "Spanish — nblh"
+      },
+      {
+        "code": "es/ntv",
+        "label": "Spanish — ntv"
+      },
+      {
+        "code": "es/nvi",
+        "label": "Spanish — nvi"
+      },
+      {
+        "code": "es/rvc",
+        "label": "Spanish — rvc"
+      },
+      {
+        "code": "es/rvr1995",
+        "label": "Spanish — rvr1995"
+      },
+      {
+        "code": "es/rvr60",
+        "label": "Spanish — rvr60"
+      },
+      {
+        "code": "es/rvr95",
+        "label": "Spanish — rvr95"
+      },
+      {
+        "code": "es/tla",
+        "label": "Spanish — tla"
+      }
+    ]
+  },
+  "fi": {
+    "label": "Finnish",
+    "versions": [
+      {
+        "code": "fi/kr92",
+        "label": "Finnish — kr92"
+      }
+    ]
+  },
+  "fr": {
+    "label": "French",
+    "versions": [
+      {
+        "code": "fr/bds",
+        "label": "French — bds"
+      },
+      {
+        "code": "fr/frc97",
+        "label": "French — frc97"
+      },
+      {
+        "code": "fr/lsg",
+        "label": "French — lsg"
+      },
+      {
+        "code": "fr/neg1979",
+        "label": "French — neg1979"
+      },
+      {
+        "code": "fr/sg21",
+        "label": "French — sg21"
+      }
+    ]
+  },
+  "grc": {
+    "label": "Greek (Ancient)",
+    "versions": [
+      {
+        "code": "grc/sblgnt",
+        "label": "Greek (Ancient) — sblgnt"
+      },
+      {
+        "code": "grc/tr1550",
+        "label": "Greek (Ancient) — tr1550"
+      },
+      {
+        "code": "grc/tr1894",
+        "label": "Greek (Ancient) — tr1894"
+      },
+      {
+        "code": "grc/whnu",
+        "label": "Greek (Ancient) — whnu"
+      }
+    ]
+  },
+  "ha": {
+    "label": "Hausa",
+    "versions": [
+      {
+        "code": "ha/hau",
+        "label": "Hausa — hau"
+      }
+    ]
+  },
+  "he": {
+    "label": "Hebrew",
+    "versions": [
+      {
+        "code": "he/hhh",
+        "label": "Hebrew — hhh"
+      },
+      {
+        "code": "he/wlc",
+        "label": "Hebrew — wlc"
+      }
+    ]
+  },
+  "hi": {
+    "label": "Hindi",
+    "versions": [
+      {
+        "code": "hi/ervhi",
+        "label": "Hindi — ervhi"
+      }
+    ]
+  },
+  "hl": {
+    "label": "Hmong (Lus)",
+    "versions": [
+      {
+        "code": "hl/hlgn",
+        "label": "Hmong (Lus) — hlgn"
+      }
+    ]
+  },
+  "hr": {
+    "label": "Croatian",
+    "versions": [
+      {
+        "code": "hr/hnzri",
+        "label": "Croatian — hnzri"
+      }
+    ]
+  },
+  "ht": {
+    "label": "Haitian Creole",
+    "versions": [
+      {
+        "code": "ht/hcv",
+        "label": "Haitian Creole — hcv"
+      }
+    ]
+  },
+  "ib": {
+    "label": "Iban",
+    "versions": [
+      {
+        "code": "ib/bk",
+        "label": "Iban — bk"
+      }
+    ]
+  },
+  "id": {
+    "label": "Indonesian",
+    "versions": [
+      {
+        "code": "id/bimk",
+        "label": "Indonesian — bimk"
+      },
+      {
+        "code": "id/tb",
+        "label": "Indonesian — tb"
+      }
+    ]
+  },
+  "ig": {
+    "label": "Igbo",
+    "versions": [
+      {
+        "code": "ig/igbob",
+        "label": "Igbo — igbob"
+      }
+    ]
+  },
+  "il": {
+    "label": "Ilocano",
+    "versions": [
+      {
+        "code": "il/ripv",
+        "label": "Ilocano — ripv"
+      }
+    ]
+  },
+  "it": {
+    "label": "Italian",
+    "versions": [
+      {
+        "code": "it/nr2006",
+        "label": "Italian — nr2006"
+      }
+    ]
+  },
+  "ja": {
+    "label": "Japanese",
+    "versions": [
+      {
+        "code": "ja/jlb",
+        "label": "Japanese — jlb"
+      }
+    ]
+  },
+  "jr": {
+    "label": "Jarai",
+    "versions": [
+      {
+        "code": "jr/jnt",
+        "label": "Jarai — jnt"
+      }
+    ]
+  },
+  "kj": {
+    "label": "Kwangali",
+    "versions": [
+      {
+        "code": "kj/okyb",
+        "label": "Kwangali — okyb"
+      }
+    ]
+  },
+  "kp": {
+    "label": "Kpelle",
+    "versions": [
+      {
+        "code": "kp/kpxnt",
+        "label": "Kpelle — kpxnt"
+      }
+    ]
+  },
+  "kr": {
+    "label": "Karaboro",
+    "versions": [
+      {
+        "code": "kr/rnksv",
+        "label": "Karaboro — rnksv"
+      }
+    ]
+  },
+  "la": {
+    "label": "Latin",
+    "versions": [
+      {
+        "code": "la/vulgate",
+        "label": "Latin — vulgate"
+      }
+    ]
+  },
+  "lg": {
+    "label": "Luganda",
+    "versions": [
+      {
+        "code": "lg/lug68",
+        "label": "Luganda — lug68"
+      }
+    ]
+  },
+  "mi": {
+    "label": "Maori",
+    "versions": [
+      {
+        "code": "mi/maori",
+        "label": "Maori — maori"
+      }
+    ]
+  },
+  "ml": {
+    "label": "Malayalam",
+    "versions": [
+      {
+        "code": "ml/mal",
+        "label": "Malayalam — mal"
+      }
+    ]
+  },
+  "mr": {
+    "label": "Marathi",
+    "versions": [
+      {
+        "code": "mr/ervmr",
+        "label": "Marathi — ervmr"
+      }
+    ]
+  },
+  "ms": {
+    "label": "Malay",
+    "versions": [
+      {
+        "code": "ms/bmdc",
+        "label": "Malay — bmdc"
+      }
+    ]
+  },
+  "my": {
+    "label": "Burmese",
+    "versions": [
+      {
+        "code": "my/bjb",
+        "label": "Burmese — bjb"
+      }
+    ]
+  },
+  "nb": {
+    "label": "Norwegian (Bokmål)",
+    "versions": [
+      {
+        "code": "nb/snd12",
+        "label": "Norwegian (Bokmål) — snd12"
+      }
+    ]
+  },
+  "ne": {
+    "label": "Nepali",
+    "versions": [
+      {
+        "code": "ne/ervne",
+        "label": "Nepali — ervne"
+      }
+    ]
+  },
+  "ng": {
+    "label": "Ndonga",
+    "versions": [
+      {
+        "code": "ng/ondb",
+        "label": "Ndonga — ondb"
+      }
+    ]
+  },
+  "nl": {
+    "label": "Dutch",
+    "versions": [
+      {
+        "code": "nl/bb",
+        "label": "Dutch — bb"
+      },
+      {
+        "code": "nl/htb",
+        "label": "Dutch — htb"
+      },
+      {
+        "code": "nl/nbg51",
+        "label": "Dutch — nbg51"
+      }
+    ]
+  },
+  "no": {
+    "label": "Norwegian",
+    "versions": [
+      {
+        "code": "no/dnb1930",
+        "label": "Norwegian — dnb1930"
+      },
+      {
+        "code": "no/n11bm",
+        "label": "Norwegian — n11bm"
+      },
+      {
+        "code": "no/n78bm",
+        "label": "Norwegian — n78bm"
+      }
+    ]
+  },
+  "ns": {
+    "label": "Nsenga",
+    "versions": [
+      {
+        "code": "ns/nso00",
+        "label": "Nsenga — nso00"
+      },
+      {
+        "code": "ns/nso51",
+        "label": "Nsenga — nso51"
+      }
+    ]
+  },
+  "ny": {
+    "label": "Nyanja (Chichewa)",
+    "versions": [
+      {
+        "code": "ny/bl92",
+        "label": "Nyanja (Chichewa) — bl92"
+      }
+    ]
+  },
+  "nyn": {
+    "label": "Nyankole",
+    "versions": [
+      {
+        "code": "nyn/rr64",
+        "label": "Nyankole — rr64"
+      }
+    ]
+  },
+  "nz": {
+    "label": "Nzema",
+    "versions": [
+      {
+        "code": "nz/nagz",
+        "label": "Nzema — nagz"
+      }
+    ]
+  },
+  "or": {
+    "label": "Oriya",
+    "versions": [
+      {
+        "code": "or/ervor",
+        "label": "Oriya — ervor"
+      }
+    ]
+  },
+  "pa": {
+    "label": "Punjabi",
+    "versions": [
+      {
+        "code": "pa/ervpa",
+        "label": "Punjabi — ervpa"
+      }
+    ]
+  },
+  "pg": {
+    "label": "Papua New Guinea",
+    "versions": [
+      {
+        "code": "pg/pnpv",
+        "label": "Papua New Guinea — pnpv"
+      }
+    ]
+  },
+  "pl": {
+    "label": "Polish",
+    "versions": [
+      {
+        "code": "pl/szpl",
+        "label": "Polish — szpl"
+      }
+    ]
+  },
+  "pm": {
+    "label": "Pampanga",
+    "versions": [
+      {
+        "code": "pm/pmpv",
+        "label": "Pampanga — pmpv"
+      }
+    ]
+  },
+  "pt": {
+    "label": "Portuguese",
+    "versions": [
+      {
+        "code": "pt/arc09",
+        "label": "Portuguese — arc09"
+      },
+      {
+        "code": "pt/bpt09",
+        "label": "Portuguese — bpt09"
+      },
+      {
+        "code": "pt/nvipt",
+        "label": "Portuguese — nvipt"
+      }
+    ]
+  },
+  "ro": {
+    "label": "Romanian",
+    "versions": [
+      {
+        "code": "ro/bdc",
+        "label": "Romanian — bdc"
+      },
+      {
+        "code": "ro/ntlr",
+        "label": "Romanian — ntlr"
+      }
+    ]
+  },
+  "ru": {
+    "label": "Russian",
+    "versions": [
+      {
+        "code": "ru/nrt",
+        "label": "Russian — nrt"
+      },
+      {
+        "code": "ru/synod",
+        "label": "Russian — synod"
+      }
+    ]
+  },
+  "rw": {
+    "label": "Kinyarwanda",
+    "versions": [
+      {
+        "code": "rw/bysb",
+        "label": "Kinyarwanda — bysb"
+      }
+    ]
+  },
+  "sk": {
+    "label": "Slovak",
+    "versions": [
+      {
+        "code": "sk/seb",
+        "label": "Slovak — seb"
+      }
+    ]
+  },
+  "smk": {
+    "label": "Sambal",
+    "versions": [
+      {
+        "code": "smk/smknt",
+        "label": "Sambal — smknt"
+      }
+    ]
+  },
+  "sn": {
+    "label": "Shona",
+    "versions": [
+      {
+        "code": "sn/sub1949",
+        "label": "Shona — sub1949"
+      }
+    ]
+  },
+  "so": {
+    "label": "Somali",
+    "versions": [
+      {
+        "code": "so/sso89so",
+        "label": "Somali — sso89so"
+      }
+    ]
+  },
+  "sp": {
+    "label": "Sango",
+    "versions": [
+      {
+        "code": "sp/spynt",
+        "label": "Sango — spynt"
+      }
+    ]
+  },
+  "ss": {
+    "label": "Swati",
+    "versions": [
+      {
+        "code": "ss/swt",
+        "label": "Swati — swt"
+      }
+    ]
+  },
+  "sw": {
+    "label": "Swahili",
+    "versions": [
+      {
+        "code": "sw/bhn",
+        "label": "Swahili — bhn"
+      },
+      {
+        "code": "sw/suv",
+        "label": "Swahili — suv"
+      }
+    ]
+  },
+  "ta": {
+    "label": "Tamil",
+    "versions": [
+      {
+        "code": "ta/ervta",
+        "label": "Tamil — ervta"
+      },
+      {
+        "code": "ta/tbov",
+        "label": "Tamil — tbov"
+      }
+    ]
+  },
+  "te": {
+    "label": "Telugu",
+    "versions": [
+      {
+        "code": "te/tel",
+        "label": "Telugu — tel"
+      }
+    ]
+  },
+  "th": {
+    "label": "Thai",
+    "versions": [
+      {
+        "code": "th/th1971",
+        "label": "Thai — th1971"
+      }
+    ]
+  },
+  "tl": {
+    "label": "Tagalog",
+    "versions": [
+      {
+        "code": "tl/abtag2001",
+        "label": "Tagalog — abtag2001"
+      },
+      {
+        "code": "tl/adb1905",
+        "label": "Tagalog — adb1905"
+      },
+      {
+        "code": "tl/fsv",
+        "label": "Tagalog — fsv"
+      },
+      {
+        "code": "tl/mbb05",
+        "label": "Tagalog — mbb05"
+      },
+      {
+        "code": "tl/mbbtag",
+        "label": "Tagalog — mbbtag"
+      },
+      {
+        "code": "tl/snd",
+        "label": "Tagalog — snd"
+      }
+    ]
+  },
+  "tn": {
+    "label": "Tswana",
+    "versions": [
+      {
+        "code": "tn/tsw08no",
+        "label": "Tswana — tsw08no"
+      },
+      {
+        "code": "tn/tsw70",
+        "label": "Tswana — tsw70"
+      }
+    ]
+  },
+  "to": {
+    "label": "Tonga",
+    "versions": [
+      {
+        "code": "to/rwv",
+        "label": "Tonga — rwv"
+      }
+    ]
+  },
+  "tr": {
+    "label": "Turkish",
+    "versions": [
+      {
+        "code": "tr/tcl02",
+        "label": "Turkish — tcl02"
+      }
+    ]
+  },
+  "ts": {
+    "label": "Tsonga",
+    "versions": [
+      {
+        "code": "ts/tso29no",
+        "label": "Tsonga — tso29no"
+      },
+      {
+        "code": "ts/tso89",
+        "label": "Tsonga — tso89"
+      }
+    ]
+  },
+  "tw": {
+    "label": "Twi",
+    "versions": [
+      {
+        "code": "tw/natwi",
+        "label": "Twi — natwi"
+      }
+    ]
+  },
+  "ur": {
+    "label": "Urdu",
+    "versions": [
+      {
+        "code": "ur/ervur",
+        "label": "Urdu — ervur"
+      },
+      {
+        "code": "ur/urd",
+        "label": "Urdu — urd"
+      }
+    ]
+  },
+  "ve": {
+    "label": "Venda",
+    "versions": [
+      {
+        "code": "ve/ven98",
+        "label": "Venda — ven98"
+      }
+    ]
+  },
+  "vi": {
+    "label": "Vietnamese",
+    "versions": [
+      {
+        "code": "vi/bpt",
+        "label": "Vietnamese — bpt"
+      },
+      {
+        "code": "vi/rvv11",
+        "label": "Vietnamese — rvv11"
+      },
+      {
+        "code": "vi/viet",
+        "label": "Vietnamese — viet"
+      }
+    ]
+  },
+  "xh": {
+    "label": "Xhosa",
+    "versions": [
+      {
+        "code": "xh/xho75",
+        "label": "Xhosa — xho75"
+      },
+      {
+        "code": "xh/xho96",
+        "label": "Xhosa — xho96"
+      }
+    ]
+  },
+  "yo": {
+    "label": "Yoruba",
+    "versions": [
+      {
+        "code": "yo/bm",
+        "label": "Yoruba — bm"
+      }
+    ]
+  },
+  "zh": {
+    "label": "Chinese",
+    "versions": [
+      {
+        "code": "zh/cn-ccb",
+        "label": "Chinese — cn-ccb"
+      },
+      {
+        "code": "zh/cn-cnvs",
+        "label": "Chinese — cn-cnvs"
+      },
+      {
+        "code": "zh/cn-csbs",
+        "label": "Chinese — cn-csbs"
+      },
+      {
+        "code": "zh/cn-cunpss",
+        "label": "Chinese — cn-cunpss"
+      },
+      {
+        "code": "zh/cn-cuvmps",
+        "label": "Chinese — cn-cuvmps"
+      },
+      {
+        "code": "zh/cn-rcu17ss",
+        "label": "Chinese — cn-rcu17ss"
+      },
+      {
+        "code": "zh/cn-rcuvss",
+        "label": "Chinese — cn-rcuvss"
+      },
+      {
+        "code": "zh/tw-ccbt",
+        "label": "Chinese — tw-ccbt"
+      },
+      {
+        "code": "zh/tw-cnvt",
+        "label": "Chinese — tw-cnvt"
+      },
+      {
+        "code": "zh/tw-csbt",
+        "label": "Chinese — tw-csbt"
+      },
+      {
+        "code": "zh/tw-cunpts",
+        "label": "Chinese — tw-cunpts"
+      },
+      {
+        "code": "zh/tw-cuvmpt",
+        "label": "Chinese — tw-cuvmpt"
+      },
+      {
+        "code": "zh/tw-rcu17ts",
+        "label": "Chinese — tw-rcu17ts"
+      },
+      {
+        "code": "zh/tw-rcuvts",
+        "label": "Chinese — tw-rcuvts"
+      }
+    ]
+  },
+  "zo": {
+    "label": "Zou",
+    "versions": [
+      {
+        "code": "zo/zomi",
+        "label": "Zou — zomi"
+      }
+    ]
+  },
+  "zu": {
+    "label": "Zulu",
+    "versions": [
+      {
+        "code": "zu/zul59",
+        "label": "Zulu — zul59"
+      }
+    ]
+  }
+}
