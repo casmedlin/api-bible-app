@@ -37,7 +37,7 @@
     },
     "potentialAction": {
       "@type": "SearchAction",
-      "target": "https://api-bible-app.pages.dev/api/bibles/{version}/{book}/{chapter}",
+      "target": "https://api-bible-app.pages.dev/api/bibles/en/kjv/{book}/{chapter}",
       "query": "required"
     }
   }
@@ -215,8 +215,15 @@
   <section>
     <h2>Quick Start</h2>
     <p>No authentication needed. Just make a GET request:</p>
-    <pre><span class="comment"># Fetch KJV Genesis chapter 1</span>
-curl https://api-bible-app.pages.dev/api/bibles/en/kjv/1/1</pre>
+    <pre><span class="comment"># Fetch KJV Genesis chapter 1 (by book number)</span>
+curl https://api-bible-app.pages.dev/api/bibles/en/kjv/1/1
+
+<span class="comment"># Same chapter using book name</span>
+curl https://api-bible-app.pages.dev/api/bibles/en/kjv/gen/1
+
+<span class="comment"># Fetch whole book of Psalms (by name or number)</span>
+curl https://api-bible-app.pages.dev/api/bibles/en/kjv/ps/19
+curl https://api-bible-app.pages.dev/api/bibles/en/esv/gen/1/1
   </section>
 
   <section>
@@ -242,8 +249,14 @@ curl https://api-bible-app.pages.dev/api/bibles/en/kjv/1/1</pre>
 
     <div class="endpoint">
       <span class="method">GET</span>
-      <span class="url">/api/bibles/:path</span>
-      <p>Alternative flat-path access. Example: <code>/api/bibles/en/kjv/1/1</code> (language/version/book/chapter).</p>
+      <span class="url">/api/bibles/:lang/:code/:book</span>
+      <p>Fetch a single book (all chapters). <code>:book</code> accepts a number (1–66) or name (<code>gen</code>, <code>ps</code>, <code>matt</code>, etc.). Example: <code>/api/bibles/en/kjv/gen</code></p>
+    </div>
+
+    <div class="endpoint">
+      <span class="method">GET</span>
+      <span class="url">/api/bibles/:lang/:code/:book/:chapter</span>
+      <p>Fetch a single chapter's verses. Example: <code>/api/bibles/en/esv/gen/1</code> or <code>/api/bibles/en/kjv/1/1</code></p>
     </div>
   </section>
 
@@ -322,7 +335,7 @@ curl https://api-bible-app.pages.dev/api/bibles/en/kjv/1/1</pre>
     <h2>Try It</h2>
     <div class="try-it">
       <label for="try-path">API Path</label>
-      <input type="text" id="try-path" value="/api/bibles/en/kjv/1/1" placeholder="/api/bibles/en/kjv/1/1">
+      <input type="text" id="try-path" value="/api/bibles/en/esv/gen/1" placeholder="/api/bibles/en/esv/gen/1">
       <button onclick="tryApi()">Fetch</button>
       <div id="try-result"></div>
     </div>

@@ -9,8 +9,14 @@ Built on data from [OfflineBible-Data](https://github.com/Jaden-J/OfflineBible-D
 ## Quick Start
 
 ```bash
-# Fetch KJV Genesis chapter 1
+# Fetch KJV Genesis chapter 1 (by book number)
 curl https://api-bible-app.pages.dev/api/bibles/en/kjv/1/1
+
+# Same chapter using book name
+curl https://api-bible-app.pages.dev/api/bibles/en/kjv/gen/1
+
+# Fetch whole book of Psalms
+curl https://api-bible-app.pages.dev/api/bibles/en/kjv/ps/19
 
 # Get the full list of available versions
 curl https://api-bible-app.pages.dev/api/manifest
@@ -42,10 +48,18 @@ Fetch an entire Bible version. The response is a JSON object with `books` (array
 
 **Example:** `/api/bibles/en/kjv`
 
-### `GET /api/bibles/:path`
-Flat-path access to any Bible version.
+### `GET /api/bibles/:lang/:code/:book`
+Fetch a single book (all chapters). `:book` accepts a book number (1–66) or name (`gen`, `exod`, `ps`, `matt`, etc.).
 
-**Example:** `/api/bibles/en/kjv/1/1` returns Genesis chapter 1 of KJV (all verses as an array).
+**Example:** `/api/bibles/en/kjv/gen` returns all chapters of Genesis from KJV.
+
+### `GET /api/bibles/:lang/:code/:book/:chapter`
+Fetch a single chapter's verses.
+
+**Example:** `/api/bibles/en/esv/gen/1` returns ESV Genesis chapter 1. Also works with book numbers: `/api/bibles/en/kjv/1/1`.
+
+### `GET /api/bibles/:path`
+Flat-path access (legacy). Only works for full version files.
 
 ### Data Format
 ```json
