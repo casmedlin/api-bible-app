@@ -252,6 +252,7 @@ export async function onRequest(context: { request: Request }): Promise<Response
         return { label: v.label, code, url: `${base}/api/download/${lang}/${code}` };
       });
       return jsonCached({ language: langInfo.label, code: lang, count: versions.length, versions });
+    }
 
     if (segs.length === 2) {
       const [lang, code] = segs;
