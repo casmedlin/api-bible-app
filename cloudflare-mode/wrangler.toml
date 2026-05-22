@@ -1,6 +1,6 @@
-name = "bible-api"
+name = "apibible-wbem"
 compatibility_date = "2025-05-21"
 pages_build_output_dir = "."
 
 [env.production]
-name = "bible-api"
+name = "apibible-wbem"
