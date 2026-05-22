@@ -7,7 +7,9 @@
     "start": "tsx src/index.ts",
     "dev": "tsx watch src/index.ts",
     "typecheck": "tsc --noEmit",
-    "generate-data": "tsx ./scripts/generate_bible_data.ts"
+    "generate-data": "tsx ./scripts/generate_bible_data.ts",
+    "deploy": "wrangler deploy",
+    "preview": "wrangler dev"
   },
   "dependencies": {
     "better-sqlite3": "^12.10.0",
@@ -20,6 +22,7 @@
     "@types/express": "^4.17.21",
     "@types/node": "^22.19.17",
     "tsx": "^4.20.5",
-    "typescript": "^5.9.2"
+    "typescript": "^5.9.2",
+    "wrangler": "^4.93.1"
   }
 }
