@@ -1,0 +1,371 @@
+<!doctype html>
+<html lang="en" prefix="og: https://ogp.me/ns#">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bible API — 196 Bible Versions in 80+ Languages</title>
+  <meta name="description" content="Free, public API serving 196 Bible translations across 80+ languages. Access KJV, NIV, ESV, NLT, and many more via simple JSON endpoints. No API key required.">
+  <meta name="keywords" content="Bible API, Bible JSON, Bible verses API, free Bible API, scripture API, KJV API, Bible translations, open Bible data">
+  <meta name="author" content="Bible API">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://api-bible-app.pages.dev/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Bible API — 196 Bible Versions in 80+ Languages">
+  <meta property="og:description" content="Free, public API serving 196 Bible translations across 80+ languages. No API key required.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://api-bible-app.pages.dev/">
+  <meta property="og:locale" content="en_US">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Bible API — 196 Bible Versions">
+  <meta name="twitter:description" content="Free, public API serving 196 Bible translations across 80+ languages. No API key required.">
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebAPI",
+    "name": "Bible API",
+    "description": "Free, public API serving 196 Bible translations across 80+ languages. No API key required.",
+    "url": "https://api-bible-app.pages.dev/",
+    "documentation": "https://api-bible-app.pages.dev/",
+    "provider": {
+      "@type": "Organization",
+      "name": "Bible API"
+    },
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://api-bible-app.pages.dev/api/bibles/{version}/{book}/{chapter}",
+      "query": "required"
+    }
+  }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      line-height: 1.7;
+      color: #1a1a1a;
+      background: #f8f9fa;
+      padding: 0;
+    }
+    header {
+      background: linear-gradient(135deg, #1a2a6c 0%, #2d4373 50%, #1a2a6c 100%);
+      color: #fff;
+      padding: 3rem 1.5rem;
+      text-align: center;
+    }
+    header h1 { font-size: 2.5rem; margin-bottom: .5rem; }
+    header p { font-size: 1.15rem; opacity: .9; max-width: 640px; margin: 0 auto; }
+    header .badge {
+      display: inline-block;
+      background: rgba(255,255,255,.15);
+      border-radius: 999px;
+      padding: .3rem 1rem;
+      font-size: .85rem;
+      margin-top: 1rem;
+    }
+    main { max-width: 960px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+    h2 {
+      font-size: 1.5rem;
+      margin: 2.5rem 0 1rem;
+      padding-bottom: .4rem;
+      border-bottom: 2px solid #e0e0e0;
+    }
+    h3 { font-size: 1.15rem; margin: 1.5rem 0 .5rem; }
+    p, li { margin-bottom: .6rem; }
+    ul, ol { padding-left: 1.5rem; margin-bottom: 1rem; }
+    a { color: #2d4373; }
+    a:hover { text-decoration: none; }
+    code {
+      background: #eef1f5;
+      padding: .15rem .45rem;
+      border-radius: 4px;
+      font-size: .9em;
+      word-break: break-word;
+    }
+    pre {
+      background: #1e1e2e;
+      color: #cdd6f4;
+      padding: 1rem;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-size: .9rem;
+      margin: .8rem 0 1.2rem;
+    }
+    pre .comment { color: #6c7086; }
+    pre .keyword { color: #cba6f7; }
+    pre .string { color: #a6e3a1; }
+    pre .number { color: #fab387; }
+    .endpoint {
+      background: #fff;
+      border: 1px solid #dde1e6;
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      margin-bottom: 1rem;
+    }
+    .endpoint .method {
+      display: inline-block;
+      font-weight: 700;
+      font-size: .8rem;
+      padding: .15rem .55rem;
+      border-radius: 4px;
+      color: #fff;
+      background: #2d4373;
+      margin-right: .5rem;
+    }
+    .endpoint .url { font-family: monospace; font-size: .95rem; }
+    .endpoint p { margin: .5rem 0 0; font-size: .93rem; color: #555; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: .8rem 0 1.2rem;
+      font-size: .93rem;
+    }
+    th, td {
+      text-align: left;
+      padding: .5rem .75rem;
+      border-bottom: 1px solid #e0e0e0;
+    }
+    th { background: #eef1f5; font-weight: 600; }
+    tr:hover td { background: #f4f5f7; }
+    .lang-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: .4rem;
+      margin-bottom: 1.2rem;
+    }
+    .lang-grid span {
+      background: #eef1f5;
+      padding: .25rem .6rem;
+      border-radius: 4px;
+      font-size: .88rem;
+    }
+    footer {
+      text-align: center;
+      padding: 2rem 1.5rem;
+      color: #777;
+      font-size: .88rem;
+      border-top: 1px solid #e0e0e0;
+    }
+    .try-it {
+      background: #eef1f5;
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      margin: 1rem 0;
+    }
+    .try-it label { font-weight: 600; display: block; margin-bottom: .4rem; }
+    .try-it input[type="text"] {
+      width: 100%;
+      padding: .5rem .75rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-family: monospace;
+      font-size: .95rem;
+    }
+    .try-it button {
+      margin-top: .5rem;
+      padding: .5rem 1.25rem;
+      background: #2d4373;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      font-size: .95rem;
+      cursor: pointer;
+    }
+    .try-it button:hover { background: #1a2a6c; }
+    #try-result {
+      margin-top: .8rem;
+      background: #1e1e2e;
+      color: #cdd6f4;
+      padding: 1rem;
+      border-radius: 8px;
+      white-space: pre-wrap;
+      font-family: monospace;
+      font-size: .88rem;
+      max-height: 400px;
+      overflow: auto;
+      display: none;
+    }
+    @media (max-width: 640px) {
+      header h1 { font-size: 1.75rem; }
+      header { padding: 2rem 1rem; }
+      main { padding: 1.5rem 1rem; }
+      .lang-grid { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Bible API</h1>
+  <p>Free, public JSON API serving <strong>196 Bible translations</strong> across <strong>80+ languages</strong>. No API key required. No rate limits.</p>
+  <span class="badge">Public &bull; Free &bull; Open Data</span>
+</header>
+
+<main>
+  <section>
+    <h2>Overview</h2>
+    <p>The Bible API provides programmatic access to 196 Bible versions from the <a href="https://github.com/OfflineBible/OfflineBible-Data">OfflineBible-Data</a> project. Every endpoint returns clean JSON suitable for web and mobile apps, study tools, or language analysis.</p>
+  </section>
+
+  <section>
+    <h2>Quick Start</h2>
+    <p>No authentication needed. Just make a GET request:</p>
+    <pre><span class="comment"># Fetch KJV Genesis chapter 1</span>
+curl https://api-bible-app.pages.dev/api/bibles/en/kjv/1/1</pre>
+  </section>
+
+  <section>
+    <h2>API Endpoints</h2>
+
+    <div class="endpoint">
+      <span class="method">GET</span>
+      <span class="url">/health</span>
+      <p>Health check. Returns <code>{ "status": "ok" }</code> if the service is running.</p>
+    </div>
+
+    <div class="endpoint">
+      <span class="method">GET</span>
+      <span class="url">/api/manifest</span>
+      <p>Returns the full manifest of all available languages and Bible versions. Use this to discover what translations are available.</p>
+    </div>
+
+    <div class="endpoint">
+      <span class="method">GET</span>
+      <span class="url">/api/bibles/:lang/:code</span>
+      <p>Fetch an entire Bible version by language code and version code. Example: <code>/api/bibles/en/kjv</code> returns the full KJV.</p>
+    </div>
+
+    <div class="endpoint">
+      <span class="method">GET</span>
+      <span class="url">/api/bibles/:path</span>
+      <p>Alternative flat-path access. Example: <code>/api/bibles/en/kjv/1/1</code> (language/version/book/chapter).</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Available Languages</h2>
+    <p>The following languages have at least one Bible version available:</p>
+    <div class="lang-grid">
+      <span>Afrikaans (af)</span><span>Akposso (akp)</span><span>Arabic (ar)</span>
+      <span>Bacama (bc)</span><span>Batak Toba (btx)</span><span>Cabécar (cb)</span>
+      <span>Cantonese (cnh)</span><span>Chewa (ny)</span><span>Croatian (hr)</span>
+      <span>Czech (cs)</span><span>Danish (da)</span><span>Dutch (nl)</span>
+      <span>English (en)</span><span>Estonian (et)</span><span>Finnish (fi)</span>
+      <span>French (fr)</span><span>German (de)</span><span>Greek (grc)</span>
+      <span>Haitian (ht)</span><span>Hausa (ha)</span><span>Hebrew (he)</span>
+      <span>Hindi (hi)</span><span>Hmong (hl)</span><span>Hungarian (hu)</span>
+      <span>Ibibio (ib)</span><span>Igbo (ig)</span><span>Ilocano (il)</span>
+      <span>Indonesian (id)</span><span>Italian (it)</span><span>Japanese (ja)</span>
+      <span>Jarai (jr)</span><span>Kekchi (kp)</span><span>Korean (kr)</span>
+      <span>Kpelle (kp)</span><span>Latin (la)</span><span>Latvian (lv)</span>
+      <span>Luganda (lg)</span><span>Malayalam (ml)</span><span>Marathi (mr)</span>
+      <span>Māori (mi)</span><span>Norwegian (nb)</span><span>Nuer (nus)</span>
+      <span>Nyanja (ny)</span><span>Oriya (or)</span><span>Pampanga (pg)</span>
+      <span>Polish (pl)</span><span>Portuguese (pt)</span><span>Romanian (ro)</span>
+      <span>Russian (ru)</span><span>Rwanda (rw)</span><span>Samoan (sm)</span>
+      <span>Serbian (sr)</span><span>Shona (sn)</span><span>Sinhala (si)</span>
+      <span>Slovak (sk)</span><span>Somali (so)</span><span>Spanish (es)</span>
+      <span>Swahili (sw)</span><span>Swedish (sv)</span><span>Tagalog (tl)</span>
+      <span>Tamil (ta)</span><span>Telugu (te)</span><span>Thai (th)</span>
+      <span>Tonga (to)</span><span>Tshiluba (lua)</span><span>Tsonga (ts)</span>
+      <span>Tswana (tn)</span><span>Turkish (tr)</span><span>Twi (tw)</span>
+      <span>Ukrainian (uk)</span><span>Urdu (ur)</span><span>Venda (ve)</span>
+      <span>Vietnamese (vi)</span><span>Xhosa (xh)</span><span>Yoruba (yo)</span>
+      <span>Zapotec (zp)</span><span>Chinese (zh)</span><span>Zulu (zu)</span>
+    </div>
+    <p>Get the full list with version codes from <code><a href="/api/manifest">/api/manifest</a></code>.</p>
+  </section>
+
+  <section>
+    <h2>Example: English Versions</h2>
+    <table>
+      <thead><tr><th>Version</th><th>Code</th><th>Example URL</th></tr></thead>
+      <tbody>
+        <tr><td>King James Version</td><td>kjv</td><td><code>/api/bibles/en/kjv</code></td></tr>
+        <tr><td>New International Version (2011)</td><td>niv2011</td><td><code>/api/bibles/en/niv2011</code></td></tr>
+        <tr><td>English Standard Version</td><td>esv</td><td><code>/api/bibles/en/esv</code></td></tr>
+        <tr><td>New Living Translation</td><td>nlt</td><td><code>/api/bibles/en/nlt</code></td></tr>
+        <tr><td>New American Standard Bible</td><td>nasb</td><td><code>/api/bibles/en/nasb</code></td></tr>
+        <tr><td>American Standard Version</td><td>asv</td><td><code>/api/bibles/en/asv</code></td></tr>
+        <tr><td>World English Bible</td><td>web</td><td><code>/api/bibles/en/web</code></td></tr>
+        <tr><td>Young's Literal Translation</td><td>ylt</td><td><code>/api/bibles/en/ylt</code></td></tr>
+      </tbody>
+    </table>
+    <p>See <code><a href="/api/manifest">/api/manifest</a></code> for all languages and versions.</p>
+  </section>
+
+  <section>
+    <h2>Data Format</h2>
+    <p>Each version file is a JSON object with two top-level keys:</p>
+    <pre>{
+  <span class="string">"books"</span>: [
+    [<span class="string">"Gen"</span>, <span class="number">50</span>],
+    [<span class="string">"Exod"</span>, <span class="number">40</span>]
+    <span class="comment">// [book_name, chapter_count]</span>
+  ],
+  <span class="string">"verses"</span>: {
+    <span class="string">"1"</span>: {
+      <span class="string">"1"</span>: [<span class="string">"In the beginning God created the heaven and the earth."</span>],
+      <span class="string">"2"</span>: [<span class="string">"And the earth was without form, and void..."</span>]
+      <span class="comment">// book_number: { chapter_number: [verse1, verse2, ...] }</span>
+    }
+  }
+}</pre>
+  </section>
+
+  <section>
+    <h2>Try It</h2>
+    <div class="try-it">
+      <label for="try-path">API Path</label>
+      <input type="text" id="try-path" value="/api/bibles/en/kjv/1/1" placeholder="/api/bibles/en/kjv/1/1">
+      <button onclick="tryApi()">Fetch</button>
+      <div id="try-result"></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Use Cases</h2>
+    <ul>
+      <li><strong>Mobile &amp; web apps</strong> — Build Bible readers, devotionals, or study tools without managing your own database.</li>
+      <li><strong>Language learning</strong> — Compare parallel translations for language study or linguistic analysis.</li>
+      <li><strong>Data analysis</strong> — Tokenize, search, or run NLP across hundreds of translations.</li>
+      <li><strong>AI / LLM datasets</strong> — Use as ground-truth text for training or evaluation.</li>
+      <li><strong>Education</strong> — Power classroom tools, quizzes, or scripture-memory apps.</li>
+    </ul>
+  </section>
+</main>
+
+<footer>
+  <p>Powered by <a href="https://github.com/OfflineBible/OfflineBible-Data">OfflineBible-Data</a> &bull; Deployed on <a href="https://pages.cloudflare.com/">Cloudflare Pages</a></p>
+  <p style="margin-top:.3rem;"><a href="https://github.com/your-org/api-bible-app">GitHub</a></p>
+</footer>
+
+<script>
+async function tryApi() {
+  const path = document.getElementById('try-path').value.trim();
+  const result = document.getElementById('try-result');
+  result.style.display = 'block';
+  result.textContent = 'Loading...';
+  try {
+    const res = await fetch(path);
+    const text = await res.text();
+    try {
+      result.textContent = JSON.stringify(JSON.parse(text), null, 2);
+    } catch {
+      result.textContent = text;
+    }
+  } catch (err) {
+    result.textContent = 'Error: ' + err.message;
+  }
+}
+// Auto-fetch on load with default
+tryApi();
+</script>
+
+</body>
+</html>

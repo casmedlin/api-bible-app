@@ -6,6 +6,7 @@
   "scripts": {
     "start": "tsx src/index.ts",
     "dev": "tsx watch src/index.ts",
+    "typecheck": "tsc --noEmit",
     "generate-data": "tsx ./scripts/generate_bible_data.ts"
   },
   "dependencies": {

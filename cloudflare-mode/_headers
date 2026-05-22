@@ -1,0 +1,9 @@
+# Landing page
+/index.html
+  Cache-Control: public, max-age=3600
+  X-Content-Type-Options: nosniff
+
+# Static bibles data (fallback; Functions also set headers)
+/bibles/*.json
+  Access-Control-Allow-Origin: *
+  Cache-Control: public, max-age=31536000, immutable

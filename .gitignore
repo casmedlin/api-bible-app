@@ -6,3 +6,6 @@
 dist
 node_modules
 .bible-cache/
+cloudflare-mode/node_modules/
+cloudflare-mode/.wrangler/
+cloudflare-mode/bibles/

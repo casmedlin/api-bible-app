@@ -10,6 +10,16 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+// Serve the API landing page at the root
+const LANDING_PAGE = path.resolve(__dirname, "../cloudflare-mode/index.html");
+app.get("/", (_req, res) => {
+  res.type("html").sendFile(LANDING_PAGE, (err) => {
+    if (err) {
+      res.status(200).send("Bible API is running. See /api/manifest for available versions.");
+    }
+  });
+});
+
 app.get("/health", (_req, res) => {
   res.json({ status: "ok" });
 });

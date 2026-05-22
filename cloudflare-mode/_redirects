@@ -1,0 +1,6 @@
+# API redirects
+/api /api/manifest 302
+
+# SEO: redirect common misspellings
+/bible/* /api/bibles/:splat 301
+/versions /api/manifest 301
