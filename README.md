@@ -2,7 +2,7 @@
 
 Free, public JSON API serving **196 Bible translations** across **80+ languages**. No API key required. No rate limits.
 
-Built on data from [OfflineBible-Data](https://github.com/OfflineBible/OfflineBible-Data).
+Built on data from [OfflineBible-Data](https://github.com/Jaden-J/OfflineBible-Data) by [Jaden-J](https://github.com/Jaden-J).
 
 ---
 
@@ -186,4 +186,4 @@ npm run generate-data
 
 ## License
 
-Data sourced from [OfflineBible-Data](https://github.com/OfflineBible/OfflineBible-Data). The API server code is available under the MIT license.
+Data sourced from [OfflineBible-Data](https://github.com/Jaden-J/OfflineBible-Data) by [Jaden-J](https://github.com/Jaden-J). The API server code is available under the MIT license.
