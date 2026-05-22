@@ -22,6 +22,30 @@
   <meta name="twitter:title" content="Bible API — 196 Bible Versions">
   <meta name="twitter:description" content="Free, public API serving 196 Bible translations across 80+ languages. No API key required.">
 
+  <!-- Google Analytics (consent-based, GDPR/CCPA compliant) -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      'analytics_storage': 'denied',
+      'ad_storage': 'denied',
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied',
+      'wait_for_update': 500
+    });
+    gtag('set', 'url_passthrough', true);
+    gtag('set', 'anonymize_ip', true);
+  </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-J8V08F0Q3K"></script>
+  <script>
+    gtag('js', new Date());
+    gtag('config', 'G-J8V08F0Q3K', {
+      'anonymize_ip': true,
+      'allow_google_signals': false,
+      'allow_ad_personalization_signals': false
+    });
+  </script>
+
   <!-- JSON-LD Structured Data -->
   <script type="application/ld+json">
   {
@@ -190,6 +214,34 @@
       overflow: auto;
       display: none;
     }
+    .cookie-banner {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #1a1a2e;
+      color: #eee;
+      padding: 1rem 1.5rem;
+      font-size: .88rem;
+      z-index: 1000;
+      display: none;
+      box-shadow: 0 -2px 12px rgba(0,0,0,.2);
+    }
+    .cookie-banner.show { display: flex; flex-wrap: wrap; gap: .75rem; align-items: center; justify-content: center; }
+    .cookie-banner p { margin: 0; }
+    .cookie-banner a { color: #8ab4f8; }
+    .cookie-btn {
+      padding: .45rem 1.2rem;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: .88rem;
+      font-weight: 600;
+    }
+    .cookie-btn.accept { background: #2d4373; color: #fff; }
+    .cookie-btn.decline { background: transparent; color: #aaa; border: 1px solid #555; }
+    .cookie-btn.accept:hover { background: #1a2a6c; }
+    .cookie-btn.decline:hover { color: #fff; border-color: #888; }
     @media (max-width: 640px) {
       header h1 { font-size: 1.75rem; }
       header { padding: 2rem 1rem; }
@@ -386,8 +438,14 @@ curl https://apibible.wbem.org/api/bibles/en/esv/gen/1/1
   </p>
 </main>
 
+<div class="cookie-banner" id="cookieBanner">
+  <p>This site uses Google Analytics for anonymous usage statistics. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Privacy Policy</a></p>
+  <button class="cookie-btn accept" onclick="acceptCookies()">Accept</button>
+  <button class="cookie-btn decline" onclick="declineCookies()">Decline</button>
+</div>
+
 <footer>
-  <p>&copy; Bible API</p>
+  <p>&copy; Bible API &bull; <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Privacy</a></p>
 </footer>
 
 <script>
@@ -410,6 +468,27 @@ async function tryApi() {
 }
 // Auto-fetch on load with default
 tryApi();
+
+// GDPR / CCPA consent management
+(function() {
+  const consent = localStorage.getItem('cookie-consent');
+  if (!consent) {
+    document.getElementById('cookieBanner').classList.add('show');
+  } else if (consent === 'accepted') {
+    gtag('consent', 'update', { 'analytics_storage': 'granted' });
+  }
+})();
+
+window.acceptCookies = function() {
+  localStorage.setItem('cookie-consent', 'accepted');
+  gtag('consent', 'update', { 'analytics_storage': 'granted' });
+  document.getElementById('cookieBanner').classList.remove('show');
+};
+
+window.declineCookies = function() {
+  localStorage.setItem('cookie-consent', 'declined');
+  document.getElementById('cookieBanner').classList.remove('show');
+};
 </script>
 
 </body>
