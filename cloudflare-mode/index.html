@@ -355,7 +355,7 @@ curl https://apibible.wbem.org/api/bibles/en/kjv/ps/19</pre>
 
   <section>
     <h2>Download Endpoints</h2>
-    <p>Download Bible versions as JSON files or ZIP archives for offline use.</p>
+    <p>Download single Bible versions as JSON files, or list all versions in a language.</p>
 
     <div class="endpoint">
       <span class="method">GET</span>
@@ -366,7 +366,7 @@ curl https://apibible.wbem.org/api/bibles/en/kjv/ps/19</pre>
     <div class="endpoint">
       <span class="method">GET</span>
       <span class="url">/api/download/:lang</span>
-      <p>Download all Bible versions in a language as a ZIP archive. Example: <code><a href="/api/download/en">/api/download/en</a></code> downloads all English versions.</p>
+      <p>List all versions in a language with individual download URLs. Example: <code><a href="/api/download/en">/api/download/en</a></code> lists all English versions.</p>
     </div>
   </section>
 
