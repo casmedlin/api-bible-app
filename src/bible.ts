@@ -124,3 +124,119 @@ export function getBook(data: BibleData, bookNum: number) {
     chapters,
   };
 }
+
+function crc32(buf: Uint8Array): number {
+  let crc = 0xffffffff;
+  for (let i = 0; i < buf.length; i++) {
+    crc ^= buf[i];
+    for (let j = 0; j < 8; j++) {
+      crc = (crc >>> 1) ^ (crc & 1 ? 0xedb88320 : 0);
+    }
+  }
+  return (crc ^ 0xffffffff) >>> 0;
+}
+
+function dosTime(date: Date): number {
+  const h = date.getHours() << 11;
+  const m = date.getMinutes() << 5;
+  const s = Math.floor(date.getSeconds() / 2);
+  return h | m | s;
+}
+
+function dosDate(date: Date): number {
+  const y = (date.getFullYear() - 1980) << 9;
+  const mo = (date.getMonth() + 1) << 5;
+  const d = date.getDate();
+  return y | mo | d;
+}
+
+function utf8Encode(s: string): Uint8Array {
+  return new TextEncoder().encode(s);
+}
+
+function u32LE(v: number): Uint8Array {
+  return new Uint8Array([v & 0xff, (v >> 8) & 0xff, (v >> 16) & 0xff, (v >> 24) & 0xff]);
+}
+
+function u16LE(v: number): Uint8Array {
+  return new Uint8Array([v & 0xff, (v >> 8) & 0xff]);
+}
+
+export type ZipEntry = { name: string; data: Uint8Array };
+
+export function buildZip(entries: ZipEntry[]): Uint8Array {
+  const now = new Date();
+  const dt = dosDate(now);
+  const tm = dosTime(now);
+
+  const localHeaders: Uint8Array[] = [];
+  const centralHeaders: Uint8Array[] = [];
+  let offset = 0;
+
+  for (const entry of entries) {
+    const nameBytes = utf8Encode(entry.name);
+    const data = entry.data;
+    const crc = crc32(data);
+    const size = data.length;
+
+    const local = new Uint8Array(30 + nameBytes.length);
+    local.set(u32LE(0x04034b50), 0);
+    local.set(u16LE(20), 4);
+    local.set(u16LE(0x0800), 6);
+    local.set(u16LE(0), 8);
+    local.set(u16LE(dt), 10);
+    local.set(u16LE(tm), 12);
+    local.set(u32LE(crc), 14);
+    local.set(u32LE(size), 18);
+    local.set(u32LE(size), 22);
+    local.set(u16LE(nameBytes.length), 26);
+    local.set(u16LE(0), 28);
+    local.set(nameBytes, 30);
+    localHeaders.push(local, data);
+
+    const central = new Uint8Array(46 + nameBytes.length);
+    central.set(u32LE(0x02014b50), 0);
+    central.set(u16LE(20), 4);
+    central.set(u16LE(20), 6);
+    central.set(u16LE(0x0800), 8);
+    central.set(u16LE(0), 10);
+    central.set(u16LE(dt), 12);
+    central.set(u16LE(tm), 14);
+    central.set(u32LE(crc), 16);
+    central.set(u32LE(size), 20);
+    central.set(u32LE(size), 24);
+    central.set(u16LE(nameBytes.length), 28);
+    central.set(u16LE(0), 30);
+    central.set(u16LE(0), 32);
+    central.set(u16LE(0), 34);
+    central.set(u16LE(0), 36);
+    central.set(u32LE(0), 38);
+    central.set(u32LE(offset), 42);
+    central.set(nameBytes, 46);
+    centralHeaders.push(central);
+
+    offset += 30 + nameBytes.length + size;
+  }
+
+  const centralSize = centralHeaders.reduce((s, h) => s + h.length, 0);
+
+  const eocd = new Uint8Array(22);
+  eocd.set(u32LE(0x06054b50), 0);
+  eocd.set(u16LE(0), 4);
+  eocd.set(u16LE(0), 6);
+  eocd.set(u16LE(entries.length), 8);
+  eocd.set(u16LE(entries.length), 10);
+  eocd.set(u32LE(centralSize), 12);
+  eocd.set(u32LE(offset), 16);
+  eocd.set(u16LE(0), 20);
+
+  const parts = [...localHeaders, ...centralHeaders, eocd];
+  const total = parts.reduce((s, p) => s + p.length, 0);
+  const result = new Uint8Array(total);
+  let pos = 0;
+  for (const p of parts) {
+    result.set(p, pos);
+    pos += p.length;
+  }
+  return result;
+}

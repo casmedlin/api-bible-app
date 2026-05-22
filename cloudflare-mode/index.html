@@ -354,6 +354,23 @@ curl https://apibible.wbem.org/api/bibles/en/kjv/ps/19</pre>
   </section>
 
   <section>
+    <h2>Download Endpoints</h2>
+    <p>Download Bible versions as JSON files or ZIP archives for offline use.</p>
+
+    <div class="endpoint">
+      <span class="method">GET</span>
+      <span class="url">/api/download/:lang/:code</span>
+      <p>Download a single Bible version as a JSON file. Example: <code><a href="/api/download/en/kjv">/api/download/en/kjv</a></code> downloads KJV.</p>
+    </div>
+
+    <div class="endpoint">
+      <span class="method">GET</span>
+      <span class="url">/api/download/:lang</span>
+      <p>Download all Bible versions in a language as a ZIP archive. Example: <code><a href="/api/download/en">/api/download/en</a></code> downloads all English versions.</p>
+    </div>
+  </section>
+
+  <section>
     <h2>Available Languages</h2>
     <p>The following languages have at least one Bible version available:</p>
     <div class="lang-grid">

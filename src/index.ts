@@ -2,7 +2,7 @@ import express from "express";
 import cors from "cors";
 import path from "path";
 import fs from "fs";
-import { resolveBook, getChapter, getBook, type BibleData } from "./bible";
+import { resolveBook, getChapter, getBook, buildZip, type BibleData } from "./bible";
 
 const PORT = parseInt(
   process.env.BIBLE_API_PORT || process.env.PORT || "3002",
@@ -133,6 +133,44 @@ app.get("/api/bibles/:path(*)", (req, res) => {
       .status(404)
       .json({ error: `Bible version "${req.params.path}" not found` });
   }
+});
+
+// /api/download/:lang/:code - single version download
+app.get("/api/download/:lang/:code", (req, res) => {
+  const { lang, code } = req.params;
+  const filePath = path.join(DATA_DIR, lang, `${code}.json`);
+  if (!fs.existsSync(filePath)) {
+    res.status(404).json({ error: `Bible version "${lang}/${code}" not found` });
+    return;
+  }
+  const fileName = `${lang}_${code}.json`;
+  res.setHeader("Content-Disposition", `attachment; filename="${fileName}"`);
+  res.setHeader("Content-Type", "application/json");
+  fs.createReadStream(filePath).pipe(res);
+});
+
+// /api/download/:lang - download all versions in a language as ZIP
+app.get("/api/download/:lang", (req, res) => {
+  const { lang } = req.params;
+  const langDir = path.join(DATA_DIR, lang);
+  if (!fs.existsSync(langDir) || !fs.statSync(langDir).isDirectory()) {
+    res.status(404).json({ error: `Language "${lang}" not found` });
+    return;
+  }
+  const files = fs.readdirSync(langDir).filter((f) => f.endsWith(".json"));
+  if (files.length === 0) {
+    res.status(404).json({ error: `No versions found for language "${lang}"` });
+    return;
+  }
+  const entries = files.map((f) => ({
+    name: `${lang}/${f}`,
+    data: fs.readFileSync(path.join(langDir, f)),
+  }));
+  const zip = buildZip(entries);
+  const fileName = `bibles_${lang}.zip`;
+  res.setHeader("Content-Disposition", `attachment; filename="${fileName}"`);
+  res.setHeader("Content-Type", "application/zip");
+  res.send(Buffer.from(zip));
 });
 
 app.listen(PORT, () => {
