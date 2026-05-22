@@ -17,6 +17,13 @@ jobs:
           node-version: 22
       - name: Install wrangler
         run: npm install -g wrangler
+      - name: Create project (if needed)
+        working-directory: cloudflare-mode
+        run: |
+          wrangler pages project create bible-api --production-branch main || true
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE }}
+        continue-on-error: true
       - name: Deploy
         working-directory: cloudflare-mode
         run: wrangler pages deploy . --project-name bible-api --branch main
