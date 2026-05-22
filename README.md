@@ -10,16 +10,16 @@ Built on data from [OfflineBible-Data](https://github.com/Jaden-J/OfflineBible-D
 
 ```bash
 # Fetch KJV Genesis chapter 1 (by book number)
-curl https://api-bible-app.pages.dev/api/bibles/en/kjv/1/1
+curl https://apibible.wbem.org/api/bibles/en/kjv/1/1
 
 # Same chapter using book name
-curl https://api-bible-app.pages.dev/api/bibles/en/kjv/gen/1
+curl https://apibible.wbem.org/api/bibles/en/kjv/gen/1
 
 # Fetch whole book of Psalms
-curl https://api-bible-app.pages.dev/api/bibles/en/kjv/ps/19
+curl https://apibible.wbem.org/api/bibles/en/kjv/ps/19
 
 # Get the full list of available versions
-curl https://api-bible-app.pages.dev/api/manifest
+curl https://apibible.wbem.org/api/manifest
 ```
 
 ## API Reference
