@@ -1,6 +1,5 @@
-interface Env {
-  ASSETS: Fetcher;
-}
+const DATA_BASE =
+  "https://raw.githubusercontent.com/casmedlin/api-bible-app/main/public/bibles";
 
 const BOOK_NAMES: [string, string][] = [
   ["Gen", "Genesis"], ["Exod", "Exodus"], ["Lev", "Leviticus"],
@@ -47,7 +46,17 @@ function resolveBook(input: string): number | null {
 function json(data: unknown, status = 200): Response {
   return new Response(JSON.stringify(data), {
     status,
-    headers: { "content-type": "application/json" },
+    headers: { "content-type": "application/json", "access-control-allow-origin": "*" },
+  });
+}
+
+function jsonCached(data: unknown): Response {
+  return new Response(JSON.stringify(data), {
+    headers: {
+      "content-type": "application/json",
+      "access-control-allow-origin": "*",
+      "cache-control": "public, max-age=31536000, immutable",
+    },
   });
 }
 
@@ -56,14 +65,9 @@ type BibleData = {
   verses: Record<string, Record<string, string[]>>;
 };
 
-async function loadVersion(
-  lang: string,
-  code: string,
-  env: Env,
-  origin: string,
-): Promise<BibleData | null> {
-  const url = new URL(`/bibles/${lang}/${code}.json`, origin);
-  const res = await env.ASSETS.fetch(url);
+async function loadVersion(lang: string, code: string): Promise<BibleData | null> {
+  const url = `${DATA_BASE}/${lang}/${code}.json`;
+  const res = await fetch(url);
   if (res.status !== 200) return null;
   try {
     return (await res.json()) as BibleData;
@@ -104,27 +108,21 @@ function getBook(data: BibleData, bookNum: number) {
   };
 }
 
-export async function onRequest(context: {
-  request: Request;
-  env: Env;
-}): Promise<Response> {
-  const { request, env } = context;
-  const url = new URL(request.url);
+export async function onRequest(context: { request: Request }): Promise<Response> {
+  const url = new URL(context.request.url);
   const apiPath = url.pathname.replace(/^\/api\//, "");
 
   if (apiPath === "manifest" || apiPath === "manifest/") {
-    const assetUrl = new URL("/bibles/manifest.json", url.origin);
-    const res = await env.ASSETS.fetch(assetUrl);
-    if (res.status === 200) {
-      return new Response(res.body, {
-        headers: {
-          "content-type": "application/json",
-          "access-control-allow-origin": "*",
-          "cache-control": "public, max-age=31536000, immutable",
-        },
-      });
-    }
-    return json({ error: "Failed to load manifest" }, 500);
+    const manifestUrl = `${DATA_BASE}/manifest.json`;
+    const res = await fetch(manifestUrl);
+    if (res.status !== 200) return json({ error: "Failed to load manifest" }, 500);
+    return new Response(res.body, {
+      headers: {
+        "content-type": "application/json",
+        "access-control-allow-origin": "*",
+        "cache-control": "public, max-age=31536000, immutable",
+      },
+    });
   }
 
   if (apiPath.startsWith("bibles/")) {
@@ -135,43 +133,30 @@ export async function onRequest(context: {
       const bookNum = resolveBook(bookInput);
       if (!bookNum) return json({ error: `Invalid book "${bookInput}"` }, 400);
       const chapterNum = parseInt(chapterInput, 10);
-      if (isNaN(chapterNum) || chapterNum < 1)
-        return json({ error: "Invalid chapter number" }, 400);
-      const data = await loadVersion(lang, code, env, url.origin);
-      if (!data)
-        return json({ error: `Bible version "${lang}/${code}" not found` }, 404);
+      if (isNaN(chapterNum) || chapterNum < 1) return json({ error: "Invalid chapter number" }, 400);
+      const data = await loadVersion(lang, code);
+      if (!data) return json({ error: `Bible version "${lang}/${code}" not found` }, 404);
       const chapter = getChapter(data, bookNum, chapterNum);
-      if (!chapter)
-        return json({ error: `Chapter ${chapterNum} not found in book ${bookNum}` }, 404);
-      return json(chapter);
+      if (!chapter) return json({ error: `Chapter ${chapterNum} not found` }, 404);
+      return jsonCached(chapter);
     }
 
     if (segs.length === 3) {
       const [lang, code, bookInput] = segs;
       const bookNum = resolveBook(bookInput);
       if (!bookNum) return json({ error: `Invalid book "${bookInput}"` }, 400);
-      const data = await loadVersion(lang, code, env, url.origin);
-      if (!data)
-        return json({ error: `Bible version "${lang}/${code}" not found` }, 404);
+      const data = await loadVersion(lang, code);
+      if (!data) return json({ error: `Bible version "${lang}/${code}" not found` }, 404);
       const book = getBook(data, bookNum);
       if (!book) return json({ error: `Book ${bookNum} not found` }, 404);
-      return json(book);
+      return jsonCached(book);
     }
 
     if (segs.length >= 2) {
       const [lang, code] = segs;
-      const assetUrl = new URL(`/bibles/${lang}/${code}.json`, url.origin);
-      const res = await env.ASSETS.fetch(assetUrl);
-      if (res.status === 200) {
-        return new Response(res.body, {
-          headers: {
-            "content-type": "application/json",
-            "access-control-allow-origin": "*",
-            "cache-control": "public, max-age=31536000, immutable",
-          },
-        });
-      }
-      return json({ error: `Bible version "${lang}/${code}" not found` }, 404);
+      const data = await loadVersion(lang, code);
+      if (!data) return json({ error: `Bible version "${lang}/${code}" not found` }, 404);
+      return jsonCached(data);
     }
   }
 

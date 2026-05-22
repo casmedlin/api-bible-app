@@ -4,8 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "wrangler pages dev . --port 3002",
-    "build": "mkdir -p bibles && cp -r ../public/bibles/* ./bibles/",
-    "deploy": "npm run build && wrangler pages deploy",
+    "deploy": "wrangler pages deploy",
     "preview": "wrangler pages dev"
   },
   "devDependencies": {
