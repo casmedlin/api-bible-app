@@ -246,28 +246,12 @@ export async function onRequest(context: { request: Request }): Promise<Response
       const langInfo = manifest[lang];
       if (!langInfo) return json({ error: `Language "${lang}" not found` }, 404);
 
-      const encoder = new TextEncoder();
-      const entries: { name: string; data: Uint8Array }[] = [];
-      for (const v of langInfo.versions) {
+      const base = `${url.protocol}//${url.host}`;
+      const versions = langInfo.versions.map((v: { code: string; label: string }) => {
         const code = v.code.split("/")[1];
-        const fileUrl = `${DATA_BASE}/${lang}/${code}.json`;
-        const fileRes = await fetch(fileUrl);
-        if (fileRes.status === 200) {
-          const buf = new Uint8Array(await fileRes.arrayBuffer());
-          entries.push({ name: `${lang}/${code}.json`, data: buf });
-        }
-      }
-      if (entries.length === 0) return json({ error: `No versions found for language "${lang}"` }, 404);
-
-      const zip = buildZip(entries);
-      return new Response(zip, {
-        headers: {
-          "content-type": "application/zip",
-          "content-disposition": `attachment; filename="bibles_${lang}.zip"`,
-          "access-control-allow-origin": "*",
-        },
+        return { label: v.label, code, url: `${base}/api/download/${lang}/${code}` };
       });
-    }
+      return jsonCached({ language: langInfo.label, code: lang, count: versions.length, versions });
 
     if (segs.length === 2) {
       const [lang, code] = segs;
