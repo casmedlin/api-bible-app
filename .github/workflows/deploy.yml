@@ -8,6 +8,8 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - uses: actions/checkout@v4
 
@@ -15,7 +17,7 @@ jobs:
         with:
           node-version: 22
 
-      - name: Build bible data
+      - name: Copy bible data for deployment
         run: |
           mkdir -p cloudflare-mode/bibles
           cp -r public/bibles/* cloudflare-mode/bibles/
@@ -25,4 +27,4 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           workingDirectory: cloudflare-mode
-          command: pages deploy .
+          command: pages deploy . --project-name bible-api
