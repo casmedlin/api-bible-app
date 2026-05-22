@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://apibible.wbem.org/sitemap.xml
