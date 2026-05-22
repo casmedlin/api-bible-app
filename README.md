@@ -198,6 +198,10 @@ npm run generate-data
 
 ---
 
+## Related
+
+- [Biblical Encouragement](https://www.biblicalencouragement.org/) — Daily scripture-based encouragement and resources.
+
 ## License
 
 Data sourced from [OfflineBible-Data](https://github.com/Jaden-J/OfflineBible-Data) by [Jaden-J](https://github.com/Jaden-J). The API server code is available under the MIT license.
